@@ -39,6 +39,7 @@ class Player(BasePlayer):
             ['female','Female'],
             ['male','Male'],
         ],
+        widget=widgets.RadioSelect,
     )
     ethnicity = models.StringField(
         label='Which of the following best describes you?',
@@ -51,6 +52,7 @@ class Player(BasePlayer):
             ['multi','Multiracial or Biracial'],
             ['none','A race/ethnicity not listed here'],
         ],
+        widget=widgets.RadioSelect,
     )
     age = models.IntegerField(
         label='What is your age?',
@@ -69,6 +71,7 @@ class Player(BasePlayer):
             ['USA', 'USA'],
             ['Sweden', 'Sweden'],
             ['Russia', 'Russia'],
+            ['Germany', 'Germany']
         ],
     )
 
