@@ -71,8 +71,9 @@ class Player(BasePlayer):
             ['USA', 'USA'],
             ['Sweden', 'Sweden'],
             ['Russia', 'Russia'],
-            ['Deutschland', 'Deutschland'],
-            ['Italy', 'Italy']
+            ['Italy', 'Italy'],
+            ['Germany', 'Germany'],
+            ['Spain', 'Spain'],
         ],
     )
 
