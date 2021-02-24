@@ -70,8 +70,9 @@ class Player(BasePlayer):
         choices=[
             ['USA', 'USA'],
             ['Sweden', 'Sweden'],
-            ['Russia', 'Russia'],
+            ['Russian Federation', 'Russian Federation'],
             ['Germany', 'Germany'],
+            ['Spain', 'Spain'],
         ],
     )
 
