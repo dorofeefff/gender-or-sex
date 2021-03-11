@@ -28,41 +28,43 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     femininity = models.LongStringField(
-        label='Write down adjectives associated with femininity here.',
+        label='Write down adjectives associated with femininity here. Separate different adjectives by a comma.',
     )
     masculinity = models.LongStringField(
-        label='Write down adjectives associated with masculinity here.',
+        label='Write down adjectives associated with masculinity here. Separate different adjectives by a comma.',
     )
     sex = models.StringField(
         label='What sex were you assigned at birth?',
         choices=[
-            ['female','Female'],
-            ['male','Male'],
+            ['female', 'Female'],
+            ['male', 'Male'],
         ],
         widget=widgets.RadioSelect,
     )
     ethnicity = models.StringField(
         label='Which of the following best describes you?',
         choices=[
-            ['asian','Asian or Pacific Islander'],
-            ['black','Black or African American'],
-            ['hispanic','Hispanic or Latino'],
-            ['native','Native American or Alaskan Native'],
-            ['white','White or Caucasian'],
-            ['multi','Multiracial or Biracial'],
-            ['none','A race/ethnicity not listed here'],
+            ['asian', 'Asian or Pacific Islander'],
+            ['black', 'Black or African American'],
+            ['hispanic', 'Hispanic or Latino'],
+            ['native', 'Native American or Alaskan Native'],
+            ['white', 'White or Caucasian'],
+            ['multi', 'Multiracial or Biracial'],
+            ['none', 'None of the above'],
         ],
         widget=widgets.RadioSelect,
     )
     age = models.IntegerField(
         label='What is your age?',
+        min=10,
+        max=99,
     )
     major = models.StringField(
         label='What is your major?',
         choices=[
-            ['econ','Economics'],
-            ['humanities','Humanities'],
-            ['engineering','Engineering'],
+            ['economics', 'Economics'],
+            ['humanities', 'Humanities'],
+            ['engineering', 'Engineering'],
         ],
     )
     country_of_birth = models.StringField(
@@ -71,6 +73,8 @@ class Player(BasePlayer):
             ['USA', 'USA'],
             ['Sweden', 'Sweden'],
             ['Russia', 'Russia'],
+            ['China', 'China'],
+            ['South Korea', 'South Korea'],
             ['Italy', 'Italy'],
             ['Germany', 'Germany'],
             ['Spain', 'Spain'],
@@ -81,13 +85,13 @@ class Player(BasePlayer):
 # FUNCTIONS
 # PAGES
 class Demographics(Page):
-    form_model =
-    form_fields =
+    form_model = 'player'
+    form_fields = ['sex', 'ethnicity', 'age', 'major', 'country_of_birth']
 
 
-class CognitiveReflectionTest(Page):
-    form_model =
-    form_fields =
+class FemMasc(Page):
+    form_model = 'player'
+    form_fields = ['femininity', 'masculinity']
 
 
-page_sequence = [Demographics]
+page_sequence = [FemMasc, Demographics]

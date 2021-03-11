@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+
+{% block title %}Survey{% endblock %}
+{% block content %}
+
+    <p>How feminine and how masculine do you think these people look to your peers?</p>
+
+    <p>Select a value from 1 (not feminine/masculine at all) to 100 (extremely feminine/masculine) by moving the sliders.</p>
+
+    <p>We will ask the same question several other NYU undergraduates and calculate average (mean) femininity and masculinity scores for each portrait. If your score gets to be the closest to the average, you will be paid extra $1.</p>
+
+    <p>Please note that we are asking you to report how feminine and masculine you think the portraits appear to others, rather than your personal impressions. It is also in your best interest to match the average response of other participants.</p>
+
+    <img src="{% static 'CFD/p1.jpg' %}" width="500px" />
+
+    <div class="input-group">Femininity
+        <input type="range" name="femininity_1" min="1" max="100" step="1" class="form-range">
+    </div>
+
+    <div class="input-group">Masculinity
+        <input type="range" name="masculinity_1" min="1" max="100" step="1" class="form-range">
+    </div>
+
+    {% next_button %}
+
+{% endblock %}
