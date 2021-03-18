@@ -11,7 +11,9 @@
 
     <p>Please note that we are asking you to report how feminine and masculine you think the portraits appear to others, rather than your personal impressions. It is also in your best interest to match the average response of other participants.</p>
 
-    <img src="{% static 'CFD/p1.jpg' %}" width="500px" />
+    <img id="your_photo" src="something" width="500px"/>
+
+    <p>Your photo number is {{ photo_1 }} and {{ photo_2 }}</p>
 
     <div class="input-group">Femininity
         <input type="range" name="femininity_1" min="1" max="100" step="1" class="form-range">
@@ -22,5 +24,13 @@
     </div>
 
     {% next_button %}
+
+    <script>
+        let photoNumber = {{ photo_1 }};
+        let photoString = photoNumber.toString();
+        let oldPathToPhoto = "{% static 'CFD/pXXX.jpg' %}";
+        let newPathToPhoto = oldPathToPhoto.replace("XXX", photoString);
+        document.getElementById("your_photo").src = newPathToPhoto;
+    </script>
 
 {% endblock %}

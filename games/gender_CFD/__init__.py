@@ -28,20 +28,31 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    photo_choice_1 = models.IntegerField()
     femininity_1 = models.IntegerField(
         label='Femininity',
     )
     masculinity_1 = models.IntegerField(
         label='Masculinity',
     )
+    ph_1 = models.IntegerField()
+    ph_2 = models.IntegerField()
 
 
 # FUNCTIONS
 # PAGES
 class GenderCFD(Page):
-    form_model = 'player'
-    form_fields = ['femininity_1', 'masculinity_1']
+    form_model = "player"
+    form_fields = ["femininity_1", "masculinity_1"]
+
+    # Generate indices of photos to show to this subject
+    def vars_for_template(self):
+        photo_1, photo_2 = random.sample(range(1, 6), 2)
+        self.ph_1 = photo_1
+        self.ph_2 = photo_2
+        return {
+            "photo_1": photo_1,
+            "photo_2": photo_2,
+        }
 
 
 page_sequence = [GenderCFD]
