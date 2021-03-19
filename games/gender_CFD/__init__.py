@@ -1,22 +1,11 @@
-from otree.api import (
-    Page,
-    WaitPage,
-    models,
-    widgets,
-    BaseConstants,
-    BaseSubsession,
-    BaseGroup,
-    BasePlayer,
-    Currency as c,
-    currency_range,
-)
+from otree.api import *
 import random
 
 
 class Constants(BaseConstants):
     name_in_url = 'photos'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 3
 
 
 class Subsession(BaseSubsession):
@@ -34,25 +23,28 @@ class Player(BasePlayer):
     masculinity_1 = models.IntegerField(
         label='Masculinity',
     )
-    ph_1 = models.IntegerField()
-    ph_2 = models.IntegerField()
+    photo_this_round = models.IntegerField()
 
 
 # FUNCTIONS
+
+# Choose photos that will be shown to the subjects
+def creating_session(subsession):
+    # In the first round, create lists of photos for all rounds
+    if subsession.round_number == 1:
+        for player in subsession.get_players():
+            player.participant.photo_ids_global = random.sample(range(1, 7), k=3)
+            player.photo_this_round = player.participant.photo_ids_global[0]
+    # In all other rounds, choose from the list created in round 1
+    else:
+        for player in subsession.get_players():
+            player.photo_this_round = player.participant.photo_ids_global[subsession.round_number-1]
+
+
 # PAGES
 class GenderCFD(Page):
     form_model = "player"
     form_fields = ["femininity_1", "masculinity_1"]
-
-    # Generate indices of photos to show to this subject
-    def vars_for_template(self):
-        photo_1, photo_2 = random.sample(range(1, 6), 2)
-        self.ph_1 = photo_1
-        self.ph_2 = photo_2
-        return {
-            "photo_1": photo_1,
-            "photo_2": photo_2,
-        }
 
 
 page_sequence = [GenderCFD]

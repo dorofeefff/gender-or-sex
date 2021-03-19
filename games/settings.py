@@ -48,3 +48,5 @@ Here are some oTree games.
 SECRET_KEY = '2124249213771'
 
 INSTALLED_APPS = ['otree']
+
+PARTICIPANT_FIELDS = ['photo_ids_global']
