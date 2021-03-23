@@ -13,24 +13,49 @@
 
     <img id="your_photo" src="" width="500px"/>
 
-    <p>Your photo number is {{ player.photo_this_round }}</p>
+    <h4>Femininity</h4>
+    <p id="f_choice"></p>
 
-    <div class="input-group">Femininity
-        <input type="range" name="femininity_1" min="1" max="100" step="1" class="form-range">
+    <div class="input-group">
+        <input type="range"
+               name="femininity_value"
+               id="f_input_id"
+               min="1" max="100" step="1"
+               class="form-range">
     </div>
 
-    <div class="input-group">Masculinity
-        <input type="range" name="masculinity_1" min="1" max="100" step="1" class="form-range">
+    <h4>Masculinity</h4>
+    <p id="m_choice"></p>
+    <div class="input-group">
+        <input type="range"
+               name="masculinity_value"
+               id="m_input_id"
+               min="1" max="100" step="1"
+               class="form-range">
     </div>
 
     {% next_button %}
 
     <script>
-        let photoNumber = {{ player.photo_this_round }};
-        let photoString = photoNumber.toString();
-        let oldPathToPhoto = "{% static 'CFD/pXXX.jpg' %}";
-        let newPathToPhoto = oldPathToPhoto.replace("XXX", photoString);
+        let yourPhoto = "{{ player.photo_this_round }}";
+        let oldPathToPhoto = "{% static 'CFD/XXX' %}";
+        let newPathToPhoto = oldPathToPhoto.replace("XXX", yourPhoto);
         document.getElementById("your_photo").src = newPathToPhoto;
+
+        var femScore = document.getElementById("f_input_id");
+        var masScore = document.getElementById("m_input_id");
+        var femChoice = document.getElementById("f_choice");
+        var masChoice = document.getElementById("m_choice");
+        femChoice.innerHTML = "Your choice: " + femScore.value;
+        masChoice.innerHTML = "Your choice: " + masScore.value;
+
+        femScore.oninput = function() {
+            femChoice.innerHTML = "Your choice: " + this.value.toString();
+        }
+
+        masScore.oninput = function() {
+            masChoice.innerHTML = "Your choice: " + this.value.toString();
+        }
     </script>
 
 {% endblock %}
