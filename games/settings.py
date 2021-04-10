@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
     dict(
         name='gos_1',
         display_name='Gender or Sex: Experiment 1',
-        app_sequence=['gos_survey', 'gender_CFD'],
+        app_sequence=['gos1_adjectives', 'gos1_CFD', 'gos1_survey'],
         num_demo_participants=2,
     ),
 ]

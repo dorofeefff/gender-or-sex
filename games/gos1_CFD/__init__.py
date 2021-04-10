@@ -4,7 +4,7 @@ from os import listdir
 
 
 class Constants(BaseConstants):
-    name_in_url = 'photos'
+    name_in_url = 'part2'
     players_per_group = None
     num_rounds = 3
 
@@ -24,7 +24,7 @@ class Player(BasePlayer):
     masculinity_value = models.IntegerField(
         label='Masculinity',
     )
-    photo_this_round = models.IntegerField()
+    photo_this_round = models.StringField()
 
 
 # FUNCTIONS

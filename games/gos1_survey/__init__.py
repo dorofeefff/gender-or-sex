@@ -16,12 +16,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    femininity = models.LongStringField(
-        label='Write down adjectives associated with femininity here. Separate different adjectives by a comma.',
-    )
-    masculinity = models.LongStringField(
-        label='Write down adjectives associated with masculinity here. Separate different adjectives by a comma.',
-    )
     sex = models.StringField(
         label='What is your gender identity?',
         choices=[
@@ -281,9 +275,4 @@ class Demographics(Page):
     form_fields = ['sex', 'ethnicity', 'age', 'major', 'country_of_birth']
 
 
-class FemMasc(Page):
-    form_model = 'player'
-    form_fields = ['femininity', 'masculinity']
-
-
-page_sequence = [FemMasc, Demographics]
+page_sequence = [Demographics]
