@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+
+{% block title %}Your Participant Code{% endblock %}
+{% block content %}
+
+    <p>
+        Here is your unique Participant Code:
+    </p>
+
+    <center><h1 id="codeHere"></h1></center>
+
+    <p>You will need it to retrieve your payment, so PLEASE COPY AND SAVE IT. Only you will know which Participant Code is assigned to you, so all your choices in the experiment will remain private.</p>
+
+
+    {% next_button %}
+
+    <script>
+    let yourCode = "{{ player.participant.code }}";
+    document.getElementById("codeHere").innerHTML = yourCode;
+    </script>
+
+{% endblock %}

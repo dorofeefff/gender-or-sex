@@ -274,5 +274,8 @@ class Demographics(Page):
     form_model = 'player'
     form_fields = ['sex', 'ethnicity', 'age', 'major', 'country_of_birth']
 
+class ShowCode(Page):
+    pass
 
-page_sequence = [Demographics]
+
+page_sequence = [Demographics, ShowCode]

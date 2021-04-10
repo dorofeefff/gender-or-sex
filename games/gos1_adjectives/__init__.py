@@ -26,11 +26,12 @@ class Player(BasePlayer):
 
 # FUNCTIONS
 # PAGES
-
-
 class FemMasc(Page):
     form_model = 'player'
     form_fields = ['femininity', 'masculinity']
 
+class ShowCode(Page):
+    pass
 
-page_sequence = [FemMasc]
+
+page_sequence = [ShowCode, FemMasc]
