@@ -23,22 +23,30 @@ class Player(BasePlayer):
         label='Write down adjectives associated with masculinity here. Separate different adjectives by a comma.',
     )
     sex = models.StringField(
-        label='What sex were you assigned at birth?',
+        label='What is your gender identity?',
         choices=[
-            ['female', 'Female'],
-            ['male', 'Male'],
+            ['female', 'Woman or Female'],
+            ['male', 'Man or Male'],
+            ['trans_w', 'Trans Woman'],
+            ['trans_m', 'Trans Man'],
+            ['queer', 'Genderqueer'],
+            ['agender', 'Agender'],
+            ['genderfluid', 'Genderfluid'],
             ['intersex', 'Intersex'],
-            ['other', 'Other']
+            ['non_binary', 'Non-binary'],
+            ['other', 'Other'],
         ],
         widget=widgets.RadioSelect,
     )
     ethnicity = models.StringField(
-        label='Which of the following best describes you?',
+        label='How do you usually describe yourself?',
         choices=[
-            ['asian', 'Asian or Pacific Islander'],
+            ['native', 'American Indian or Native Alaskan'],
+            ['asian', 'Asian or Asian American'],
             ['black', 'Black or African American'],
-            ['hispanic', 'Hispanic or Latino'],
-            ['native', 'Native American or Alaskan Native'],
+            ['hispanic', 'Hispanic or Latino/a/x'],
+            ['arab', 'Middle Eastern/North African (MENA) or Arab Origin'],
+            ['hawaiian', 'Native Hawaiian or Other Pacific Islander Native'],
             ['white', 'White or Caucasian'],
             ['multi', 'Multiracial or Biracial'],
             ['none', 'None of the above'],
@@ -53,9 +61,14 @@ class Player(BasePlayer):
     major = models.StringField(
         label='What is your major?',
         choices=[
-            ['economics', 'Economics'],
+            ['arts', 'Arts and Media'],
+            ['economics', 'Business and Economics'],
+            ['education', 'Education'],
+            ['health', 'Health'],
             ['humanities', 'Humanities'],
-            ['engineering', 'Engineering'],
+            ['stem', 'Science, Technology, Engineering & Math'],
+            ['social', 'Social Sciences (other than economics)'],
+            ['other', 'Other'],
         ],
     )
     country_of_birth = models.StringField(
