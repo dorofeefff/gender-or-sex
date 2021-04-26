@@ -6,7 +6,7 @@ from os import listdir
 class Constants(BaseConstants):
     name_in_url = 'part2'
     players_per_group = None
-    num_rounds = 3
+    num_rounds = 10
 
 
 class Subsession(BaseSubsession):

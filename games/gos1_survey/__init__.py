@@ -30,7 +30,6 @@ class Player(BasePlayer):
             ['non_binary', 'Non-binary'],
             ['other', 'Other'],
         ],
-        widget=widgets.RadioSelect,
     )
     ethnicity = models.StringField(
         label='How do you usually describe yourself?',
@@ -45,7 +44,6 @@ class Player(BasePlayer):
             ['multi', 'Multiracial or Biracial'],
             ['none', 'None of the above'],
         ],
-        widget=widgets.RadioSelect,
     )
     age = models.IntegerField(
         label='What is your age?',
