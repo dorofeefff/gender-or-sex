@@ -48,5 +48,9 @@ class GenderCFD(Page):
     form_model = "player"
     form_fields = ["femininity_value", "masculinity_value"]
 
+    @staticmethod
+    def vars_for_template(player):
+        return dict(your_photo='CFD/'+player.photo_this_round)
+
 
 page_sequence = [GenderCFD]

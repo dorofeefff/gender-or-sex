@@ -37,10 +37,8 @@
     {% next_button %}
 
     <script>
-        let yourPhoto = "{{ player.photo_this_round }}";
-        let oldPathToPhoto = "{% static 'CFD/XXX' %}";
-        let newPathToPhoto = oldPathToPhoto.replace("XXX", yourPhoto);
-        document.getElementById("your_photo").src = newPathToPhoto;
+        let yourPhoto = "CFD/{{ player.photo_this_round }}";
+        document.getElementById("your_photo").src = "{{ static your_photo }}";
 
         var femScore = document.getElementById("f_input_id");
         var masScore = document.getElementById("m_input_id");
